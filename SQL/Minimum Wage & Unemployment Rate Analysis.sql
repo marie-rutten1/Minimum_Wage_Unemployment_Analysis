@@ -99,7 +99,7 @@ WITH mwur AS (
         unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY urn.Year) AS change_in_unemployment_rate,
         ROUND(
             (
-                (unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY urn.Year)) / 
+                (unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY mw.Year)) / 
                 LAG(unemployment_rate) OVER (ORDER BY urn.Year)
             ) * 100, 2
         ) AS ur_percentage_change_unemployment_rate
