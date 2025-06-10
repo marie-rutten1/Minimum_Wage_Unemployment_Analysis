@@ -140,11 +140,11 @@ WITH mwur AS (
             ) * 100, 4
         ) AS mw_percentage_change_by_year,
         unemployment_rate, 
-        unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY urn.Year) AS change_in_unemployment_rate,
+        unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY mw.Year) AS change_in_unemployment_rate,
         ROUND(
             (
-                (unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY urn.Year)) / 
-                LAG(unemployment_rate) OVER (ORDER BY urn.Year)
+                (unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY mw.Year)) / 
+                LAG(unemployment_rate) OVER (ORDER BY mw.Year)
             ) * 100, 4
         ) AS ur_percentage_change_unemployment_rate
     FROM Minimum_Wage mw 
